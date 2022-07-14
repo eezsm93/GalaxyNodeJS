@@ -2,36 +2,35 @@ import { inject, injectable } from "tsyringe";
 import { Galaxy } from "../../entities/Galaxy";
 import { IGalaxyRepository } from "../../repository/IGalaxyRepository";
 
-
-interface ICreateGalaxyDTO{
-
-name: string;
-description: string;
-color: string;
-size: number;
-planets: Array<any>;
-
+interface ICreateGalaxyDTO {
+  name: string;
+  description: string;
+  color: string;
+  size: number;
 }
 
-class CreateGalaxyUseCase{
+class CreateGalaxyUseCase {
+  constructor(
+    @inject("GalaxyRepository") private galaxyRepository: IGalaxyRepository
+  ) {}
 
-constructor(@inject("GalaxyRepository") private galaxyRepository: IGalaxyRepository){}
+  async execute({
+    name,
+    description,
+    color,
+    size,
+  }: ICreateGalaxyDTO): Promise<Galaxy> {
+    const galaxy = new Galaxy({
+      name,
+      description,
+      color,
+      size,
+    });
 
-async execute({name, description, color, size, planets}: ICreateGalaxyDTO): Promise<Galaxy>{
+    const galaxyPersisted = await this.galaxyRepository.create(galaxy);
 
-const galaxy = new Galaxy({
-name,
-description,
-color,
-size,
-planets
-});
-
-const galaxyPersisted = await this.galaxyRepository.create(galaxy);
-
-return galaxyPersisted;
-
+    return galaxyPersisted;
   }
 }
 
-export { CreateGalaxyUseCase }
+export { CreateGalaxyUseCase };

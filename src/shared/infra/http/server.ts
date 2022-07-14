@@ -10,4 +10,4 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(router);
 
-app.listen(3333, () => console.log("Server is running"));
+app.listen(3332, () => console.log("Server is running"));

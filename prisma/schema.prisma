@@ -1,11 +1,32 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
+}
+
+model Galaxys {
+
+  galaxyId    String    @id @default(uuid())
+  name        String
+  description String
+  color       String
+  size        Decimal
+  planets     Planets[]
+
+  @@map("galaxys")
+}
+
+model Planets {
+  planetId    String  @id @default(uuid())
+  name        String
+  description String
+  size        Decimal
+
+  Galaxy         Galaxys? @relation(fields: [galaxyGalaxyId], references: [galaxyId])
+  galaxyGalaxyId String?
+
+  @@map("planets")
 }

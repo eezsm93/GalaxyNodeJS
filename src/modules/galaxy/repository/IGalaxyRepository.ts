@@ -1,15 +1,7 @@
-import { Galaxy } from "../entities/Galaxy"
+import { Galaxy } from "../entities/Galaxy";
 
-
-
-interface IGalaxyRepository{
-create(galaxy: Galaxy):Promise<Galaxy>
-
-
-
+interface IGalaxyRepository {
+  create(galaxy: Galaxy): Promise<Galaxy>;
 }
 
-
-
-
-export { IGalaxyRepository}
+export { IGalaxyRepository };

@@ -1,33 +1,33 @@
+import { Planet } from "@modules/planets/entities/Planet";
 import { v4 as uuidV4 } from "uuid";
 import { validateEntity } from "../../../shared/validation/validator";
-import { GalaxyRules } from "./GalaxyRules"
+import { GalaxyRules } from "./GalaxyRules";
 
-interface IGalaxy{
-galaxyId?: string;
-name: string;
-description: string;
-color: string;
-size:number;
-planets?: Array<any>;
+interface IGalaxy {
+  galaxyId?: string;
+  name: string;
+  description: string;
+  color: string;
+  size: number;
+  planets?: Array<Planet>;
 }
 
 class Galaxy {
-galaxyId: string;
-name: string;
-description: string;
-color: string;
-size: number;
-planets: Array<any>;
+  galaxyId: string;
+  name: string;
+  description: string;
+  color: string;
+  size: number;
+  planets?: Array<Planet>;
 
-constructor(props: IGalaxy){
-if(!props.galaxyId){
- props.galaxyId = uuidV4();
+  constructor(props: IGalaxy) {
+    if (!props.galaxyId) {
+      props.galaxyId = uuidV4();
     }
 
-validateEntity(props, GalaxyRules);
-		Object.assign(this, props);
+    validateEntity(props, GalaxyRules);
+    Object.assign(this, props);
   }
-
 }
 
-export { Galaxy }
+export { Galaxy };

@@ -1,33 +1,32 @@
-import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import {
+  IsArray,
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from "class-validator";
 
-class GalaxyRules{
+class GalaxyRules {
+  @IsNotEmpty()
+  @IsString()
+  galaxyId: string;
 
-@IsNotEmpty()
-@IsString()
-galaxyId: string;
+  @IsNotEmpty()
+  @IsString()
+  name: string;
 
-@IsNotEmpty()
-@IsString()
-name: string;
+  @IsNotEmpty()
+  @IsString()
+  description: string;
 
-@IsNotEmpty()
-@IsString()
-description: string;
+  @IsNotEmpty()
+  @IsString()
+  color: string;
 
-@IsNotEmpty()
-@IsString()
-color: string
-
-@IsNotEmpty()
-@IsNumber()
-size: number
-
-@IsNotEmpty()
-@IsArray()
-planets: Array<any>
-
-
+  @IsNotEmpty()
+  @IsNumber()
+  size: number;
 }
 
-
-export { GalaxyRules }
+export { GalaxyRules };
