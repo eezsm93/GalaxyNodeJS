@@ -10,7 +10,7 @@ import {
 class GalaxyRules {
   @IsNotEmpty()
   @IsString()
-  galaxyId: string;
+  id: string;
 
   @IsNotEmpty()
   @IsString()

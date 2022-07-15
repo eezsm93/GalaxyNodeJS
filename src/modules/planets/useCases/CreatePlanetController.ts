@@ -4,7 +4,7 @@ import { CreatePlanetUseCase } from "./CreatePlanetUseCase";
 
 class CreatePlanetController {
   async handle(request: Request, response: Response) {
-    const { name, description, size } = request.body;
+    const { name, description, size, galaxy_id } = request.body;
 
     const planetRepository = new PlanetRepository();
     const createPlanetUseCase = new CreatePlanetUseCase(planetRepository);
@@ -13,6 +13,7 @@ class CreatePlanetController {
       name,
       description,
       size,
+      galaxy_id,
     });
 
     return response.status(201).json(planet);

@@ -6,6 +6,7 @@ interface ICreatePlanetDTO {
   name: string;
   description: string;
   size: number;
+  galaxy_id: string;
 }
 
 class CreatePlanetUseCase {
@@ -17,11 +18,13 @@ class CreatePlanetUseCase {
     name,
     description,
     size,
+    galaxy_id,
   }: ICreatePlanetDTO): Promise<Planet> {
     const planet = new Planet({
       name,
       description,
       size,
+      galaxy_id,
     });
 
     const planetPersisted = await this.planetRepository.create(planet);

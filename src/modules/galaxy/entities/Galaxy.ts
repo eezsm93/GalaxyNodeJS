@@ -4,7 +4,7 @@ import { validateEntity } from "../../../shared/validation/validator";
 import { GalaxyRules } from "./GalaxyRules";
 
 interface IGalaxy {
-  galaxyId?: string;
+  id?: string;
   name: string;
   description: string;
   color: string;
@@ -13,7 +13,7 @@ interface IGalaxy {
 }
 
 class Galaxy {
-  galaxyId: string;
+  id: string;
   name: string;
   description: string;
   color: string;
@@ -21,8 +21,8 @@ class Galaxy {
   planets?: Array<Planet>;
 
   constructor(props: IGalaxy) {
-    if (!props.galaxyId) {
-      props.galaxyId = uuidV4();
+    if (!props.id) {
+      props.id = uuidV4();
     }
 
     validateEntity(props, GalaxyRules);

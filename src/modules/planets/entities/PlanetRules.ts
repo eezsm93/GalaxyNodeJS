@@ -23,6 +23,10 @@ class PlanetRules {
   @IsNotEmpty()
   @IsNumber()
   size: number;
+
+  @IsNotEmpty()
+  @IsString()
+  galaxyId: string;
 }
 
 export { PlanetRules };

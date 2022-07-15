@@ -9,7 +9,7 @@ datasource db {
 
 model Galaxys {
 
-  galaxyId    String    @id @default(uuid())
+  id          String    @id @default(uuid())
   name        String
   description String
   color       String
@@ -20,12 +20,12 @@ model Galaxys {
 }
 
 model Planets {
-  planetId    String  @id @default(uuid())
+  id          String  @id @default(uuid())
   name        String
   description String
   size        Decimal
 
-  Galaxy         Galaxys? @relation(fields: [galaxyGalaxyId], references: [galaxyId])
+  galaxyId       Galaxys? @relation(fields: [galaxyGalaxyId], references: [id])
   galaxyGalaxyId String?
 
   @@map("planets")
