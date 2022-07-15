@@ -4,25 +4,26 @@ import { v4 as uuidV4 } from "uuid";
 import { PlanetRules } from "./PlanetRules";
 
 interface IPlanet {
-  planetId?: string;
+  id?: string;
   name: string;
   description: string;
   size: number;
-  galaxy_id: string;
+  Galaxy?: Galaxy;
+  galaxy_id?: string;
 }
 
 class Planet {
-  planetId: string;
+  id: string;
   name: string;
   description: string;
   size: number;
-  galaxy_id: Galaxy;
+  Galaxy?: Galaxy;
+  galaxy_id?: string;
 
   constructor(props: IPlanet) {
-    if (!props.planetId) {
-      props.planetId = uuidV4();
+    if (!props.id) {
+      props.id = uuidV4();
     }
-
 
     validateEntity(props, PlanetRules);
     Object.assign(this, props);

@@ -1,26 +1,30 @@
+import { prisma } from "@modules/database/prismaClient";
 import { Planet } from "@modules/planets/entities/Planet";
 import { IPlanetRepository } from "@modules/planets/repository/IPlanetRepository";
-import { prisma } from "@database/prismaClient";
 
 class PlanetRepository implements IPlanetRepository {
-  async create({
-    name,
-    description,
-    size,
-    galaxy_id,
-  }: Planet): Promise<Planet> {
-    const planet = await prisma.planets.create({
+  async create(values: Planet): Promise<Planet> {
+    const { name, description, size, galaxy_id } = values;
+
+    const galaxy = await prisma.galaxy.findUnique({
+      where: {
+        id: galaxy_id,
+      },
+    });
+
+    const planet = await prisma.planet.create({
       data: {
         name,
         description,
         size,
-        Galaxys: {
+        Galaxy: {
           connect: {
-            id: galaxy_id,
+            id: galaxy.id,
           },
         },
       },
     });
+
     return planet;
   }
 }

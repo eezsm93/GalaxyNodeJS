@@ -2,31 +2,34 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
 datasource db {
   provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
 
-model Galaxys {
+model Galaxy {
 
-  id          String    @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
   color       String
-  size        Decimal
-  planets     Planets[]
-
-  @@map("galaxys")
+  size        Float
+  Planet      Planet[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
-model Planets {
-  id          String  @id @default(uuid())
+model Planet {
+  id          String   @id @default(uuid())
   name        String
   description String
-  size        Decimal
-
-  galaxyId       Galaxys? @relation(fields: [galaxyGalaxyId], references: [id])
-  galaxyGalaxyId String?
-
-  @@map("planets")
+  size        Float
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  galaxy_id   String
+  Galaxy      Galaxy   @relation(fields: [galaxy_id], references: [id])
 }
