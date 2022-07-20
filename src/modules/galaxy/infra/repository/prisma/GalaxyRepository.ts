@@ -3,6 +3,9 @@ import { Galaxy } from "@modules/galaxy/entities/Galaxy";
 import { IGalaxyRepository } from "@modules/galaxy/repository/IGalaxyRepository";
 
 class GalaxyRepository implements IGalaxyRepository {
+  async findById(id: string): Promise<Galaxy> {
+    return await prisma.galaxy.findUnique({ where: { id } });
+  }
   async create(values: Galaxy): Promise<Galaxy> {
     const galaxy = await prisma.galaxy.create({
       data: values,
@@ -11,8 +14,14 @@ class GalaxyRepository implements IGalaxyRepository {
     return galaxy;
   }
 
-  async listAll() {
-    return await prisma.galaxy.findMany();
+  async listAll(): Promise<{ Galaxys: Galaxy[] }> {
+    return {
+      Galaxys: await prisma.galaxy.findMany({
+        include: {
+          Planet: true,
+        },
+      }),
+    };
   }
 }
 

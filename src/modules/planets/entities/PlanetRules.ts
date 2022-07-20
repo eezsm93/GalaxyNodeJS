@@ -10,7 +10,7 @@ import {
 class PlanetRules {
   @IsNotEmpty()
   @IsString()
-  planetId: string;
+  id: string;
 
   @IsNotEmpty()
   @IsString()

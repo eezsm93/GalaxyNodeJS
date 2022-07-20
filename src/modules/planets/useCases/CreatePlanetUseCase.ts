@@ -1,6 +1,6 @@
-import { inject } from "tsyringe";
 import { Planet } from "../entities/Planet";
 import { IPlanetRepository } from "../repository/IPlanetRepository";
+import { IGalaxyRepository } from "@modules/galaxy/repository/IGalaxyRepository";
 
 interface ICreatePlanetDTO {
   name: string;
@@ -11,7 +11,8 @@ interface ICreatePlanetDTO {
 
 class CreatePlanetUseCase {
   constructor(
-    @inject("PlanetRepository") private planetRepository: IPlanetRepository
+    private planetRepository: IPlanetRepository,
+    private galaxyRepository: IGalaxyRepository,
   ) {}
 
   async execute({
@@ -20,11 +21,14 @@ class CreatePlanetUseCase {
     size,
     galaxy_id,
   }: ICreatePlanetDTO): Promise<Planet> {
+    const Galaxy = await this.galaxyRepository.findById(galaxy_id);
+    if (!Galaxy.id) throw new Error("Galaxia inexistente");
+
     const planet = new Planet({
       name,
       description,
       size,
-      galaxy_id,
+      Galaxy,
     });
 
     const planetPersisted = await this.planetRepository.create(planet);

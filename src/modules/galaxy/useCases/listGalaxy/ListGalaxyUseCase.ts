@@ -5,10 +5,10 @@ import { prisma } from "@prisma/client";
 class ListGalaxyUseCase {
   constructor(private galaxyRepository: IGalaxyRepository) {}
 
-  async excute(): Promise<Galaxy[]> {
-    const galaxyPersisted = await this.galaxyRepository.listAll();
+  async excute(): Promise<{ Galaxys: Galaxy[] }> {
+    const allGalaxys = await this.galaxyRepository.listAll();
 
-    return galaxyPersisted;
+    return allGalaxys;
   }
 }
 

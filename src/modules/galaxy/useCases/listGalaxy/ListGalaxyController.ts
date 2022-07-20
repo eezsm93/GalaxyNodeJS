@@ -1,12 +1,15 @@
+import { GalaxyRepository } from "@modules/galaxy/infra/repository/prisma/GalaxyRepository";
+import { Request, Response } from "express";
 import { ListGalaxyUseCase } from "./ListGalaxyUseCase";
 
 class ListGalaxyController {
-  constructor(private listGalaxyUseCase: ListGalaxyUseCase) {}
-
   async handle(request: Request, response: Response) {
-    const all = this.listGalaxyUseCase.excute();
+    const galaxyRepository = new GalaxyRepository();
+    const listGalaxyUseCase = new ListGalaxyUseCase(galaxyRepository);
 
-    return response.json(all);
+    const all = await listGalaxyUseCase.excute();
+
+    return response.status(201).json(all);
   }
 }
 

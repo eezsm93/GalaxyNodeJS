@@ -25,7 +25,7 @@ class Planet {
       props.id = uuidV4();
     }
 
-    validateEntity(props, PlanetRules);
+    // validateEntity(props, PlanetRules);
     Object.assign(this, props);
   }
 }

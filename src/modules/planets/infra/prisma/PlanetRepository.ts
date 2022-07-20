@@ -4,14 +4,7 @@ import { IPlanetRepository } from "@modules/planets/repository/IPlanetRepository
 
 class PlanetRepository implements IPlanetRepository {
   async create(values: Planet): Promise<Planet> {
-    const { name, description, size, galaxy_id } = values;
-
-    const galaxy = await prisma.galaxy.findUnique({
-      where: {
-        id: galaxy_id,
-      },
-    });
-
+    const { name, description, size, Galaxy } = values;
     const planet = await prisma.planet.create({
       data: {
         name,
@@ -19,7 +12,7 @@ class PlanetRepository implements IPlanetRepository {
         size,
         Galaxy: {
           connect: {
-            id: galaxy.id,
+            id: Galaxy.id,
           },
         },
       },
