@@ -10,6 +10,10 @@ class GalaxyRepository implements IGalaxyRepository {
 
     return galaxy;
   }
+
+  async listAll() {
+    return await prisma.galaxy.findMany();
+  }
 }
 
 export { GalaxyRepository };
