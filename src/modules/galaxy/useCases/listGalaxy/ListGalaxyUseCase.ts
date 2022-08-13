@@ -1,6 +1,5 @@
 import { Galaxy } from "@modules/galaxy/entities/Galaxy";
 import { IGalaxyRepository } from "@modules/galaxy/repository/IGalaxyRepository";
-import { prisma } from "@prisma/client";
 
 class ListGalaxyUseCase {
   constructor(private galaxyRepository: IGalaxyRepository) {}
