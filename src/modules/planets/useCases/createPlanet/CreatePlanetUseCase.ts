@@ -1,11 +1,15 @@
-import { Planet } from "../entities/Planet";
-import { IPlanetRepository } from "../repository/IPlanetRepository";
+import { Planet } from "../../entities/Planet";
+import { IPlanetRepository } from "../../repository/IPlanetRepository";
 import { IGalaxyRepository } from "@modules/galaxy/repository/IGalaxyRepository";
 
 interface ICreatePlanetDTO {
   name: string;
   description: string;
-  size: number;
+  surfaceArea: number;
+  sunDistance: number;
+  durationDay: number;
+  gravity: number;
+  isActive: boolean;
   galaxy_id: string;
 }
 
@@ -18,7 +22,11 @@ class CreatePlanetUseCase {
   async execute({
     name,
     description,
-    size,
+    surfaceArea,
+    sunDistance,
+    durationDay,
+    gravity,
+    isActive,
     galaxy_id,
   }: ICreatePlanetDTO): Promise<Planet> {
     const Galaxy = await this.galaxyRepository.findById(galaxy_id);
@@ -27,7 +35,11 @@ class CreatePlanetUseCase {
     const planet = new Planet({
       name,
       description,
-      size,
+      surfaceArea,
+      sunDistance,
+      durationDay,
+      gravity,
+      isActive,
       Galaxy,
     });
 

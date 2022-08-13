@@ -7,7 +7,11 @@ interface IPlanet {
   id?: string;
   name: string;
   description: string;
-  size: number;
+  surfaceArea: number;
+  sunDistance: number;
+  durationDay: number;
+  gravity: number;
+  isActive: boolean;
   Galaxy?: Galaxy;
   galaxy_id?: string;
 }
@@ -16,7 +20,11 @@ class Planet {
   id: string;
   name: string;
   description: string;
-  size: number;
+  surfaceArea: number;
+  sunDistance: number;
+  durationDay: number;
+  gravity: number;
+  isActive: boolean;
   Galaxy?: Galaxy;
   galaxy_id?: string;
 

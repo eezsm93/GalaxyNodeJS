@@ -22,11 +22,23 @@ class PlanetRules {
 
   @IsNotEmpty()
   @IsNumber()
-  size: number;
+  surfaceArea: number;
 
   @IsNotEmpty()
-  @IsString()
-  galaxyId: string;
+  @IsNumber()
+  sunDistance: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  durationDay: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  gravity: number;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  isActive: boolean;
 }
 
 export { PlanetRules };

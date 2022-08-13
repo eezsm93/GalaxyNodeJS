@@ -26,7 +26,11 @@ model Planet {
   id          String   @id @default(uuid())
   name        String
   description String
-  size        Float
+  surfaceArea Float
+  sunDistance Float
+  durationDay Float
+  gravity     Float
+  isActive    Boolean  @default(true)
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   galaxy_id   String?
