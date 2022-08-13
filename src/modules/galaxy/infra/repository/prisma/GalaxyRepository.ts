@@ -1,4 +1,4 @@
-import { prisma } from "@modules/database/prismaClient";
+import { prisma } from "@database/prismaClient";
 import { Galaxy } from "@modules/galaxy/entities/Galaxy";
 import { IGalaxyRepository } from "@modules/galaxy/repository/IGalaxyRepository";
 
