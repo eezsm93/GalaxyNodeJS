@@ -20,6 +20,7 @@ class CreateGalaxyUseCase {
     description,
     color,
     size,
+    type,
   }: ICreateGalaxyDTO): Promise<Galaxy> {
     const galaxy = new Galaxy({
       name,
