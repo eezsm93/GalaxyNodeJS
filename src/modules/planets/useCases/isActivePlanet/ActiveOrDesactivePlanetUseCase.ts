@@ -1,5 +1,4 @@
-import { Planet } from "@modules/planet/entities/Planet";
-import { PlanetRepository } from "@modules/planet/infra/prisma/PlanetRepository";
+import { PlanetRepository } from "@modules/planets/infra/prisma/PlanetRepository";
 
 interface IUpdateIsActiveDTO {
   id: string;

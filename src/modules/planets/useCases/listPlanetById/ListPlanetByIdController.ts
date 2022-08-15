@@ -1,4 +1,4 @@
-import { PlanetRepository } from "@modules/planet/infra/prisma/PlanetRepository";
+import { PlanetRepository } from "@modules/planets/infra/prisma/PlanetRepository";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { ListPlanetByIdUseCase } from "./ListPlanetByIdUseCase";

@@ -1,5 +1,5 @@
-import { Planet } from "@modules/planet/entities/Planet";
-import { IPlanetRepository } from "@modules/planet/repository/IPlanetRepository";
+import { Planet } from "@modules/planets/entities/Planet";
+import { IPlanetRepository } from "@modules/planets/repository/IPlanetRepository";
 
 class ListAllPlanetsUseCase {
   constructor(private planetRepository: IPlanetRepository) {}
