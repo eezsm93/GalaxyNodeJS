@@ -17,6 +17,7 @@ model Galaxy {
   description String
   color       String
   size        Float
+  type        String
   Planet      Planet[]
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt

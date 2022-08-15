@@ -7,6 +7,7 @@ interface ICreateGalaxyDTO {
   description: string;
   color: string;
   size: number;
+  type: string;
 }
 
 class CreateGalaxyUseCase {
@@ -25,6 +26,7 @@ class CreateGalaxyUseCase {
       description,
       color,
       size,
+      type,
     });
 
     const galaxyPersisted = await this.galaxyRepository.create(galaxy);
