@@ -16,7 +16,7 @@ interface ICreatePlanetDTO {
 class CreatePlanetUseCase {
   constructor(
     private planetRepository: IPlanetRepository,
-    private galaxyRepository: IGalaxyRepository,
+    private galaxyRepository: IGalaxyRepository
   ) {}
 
   async execute({
