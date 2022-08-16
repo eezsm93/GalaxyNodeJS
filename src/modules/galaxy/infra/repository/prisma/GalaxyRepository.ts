@@ -23,6 +23,14 @@ class GalaxyRepository implements IGalaxyRepository {
       }),
     };
   }
+
+  async deleteGalaxy(galaxy: Galaxy): Promise<void> {
+    await prisma.planet.delete({
+      where: {
+        id: galaxy.id,
+      },
+    });
+  }
 }
 
 export { GalaxyRepository };
