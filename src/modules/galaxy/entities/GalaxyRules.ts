@@ -27,6 +27,10 @@ class GalaxyRules {
   @IsNotEmpty()
   @IsNumber()
   size: number;
+
+  @IsNotEmpty()
+  @IsString()
+  type: string;
 }
 
 export { GalaxyRules };
