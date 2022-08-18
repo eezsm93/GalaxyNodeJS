@@ -11,9 +11,16 @@ class PlanetRepository implements IPlanetRepository {
     });
   }
 
-  async create(values: Planet): Promise<Planet> {
+  async create({ Galaxy, ...values }: Planet): Promise<Planet> {
     const planet = await prisma.planet.create({
-      data: values,
+      data: {
+        ...values,
+        Galaxy: {
+          connect: {
+            id: Galaxy.id,
+          },
+        },
+      },
     });
 
     return planet;
@@ -26,8 +33,6 @@ class PlanetRepository implements IPlanetRepository {
   }
 
   async updatePlanet({ id, ...planet }: Planet): Promise<void> {
-    console.log(id);
-    console.log({ ...planet });
     await prisma.planet.update({
       where: {
         id: id,
