@@ -1,5 +1,7 @@
 import { User } from "@modules/user/entities/User";
 import { IUserRepository } from "@modules/user/repository/IUserRepository";
+import { AppError } from "@shared/errors/AppError";
+import bcrypt from "bcrypt";
 
 interface ICreateUserDTO {
   name: string;
@@ -16,6 +18,12 @@ class CreateUserUseCase {
       "email",
       values.email
     );
+
+    if (dataUsersThatHasEmail?.id) {
+      throw new AppError("Usuário com este email já existe");
+    }
+
+    values.password = bcrypt.hashSync(values.password, 5);
 
     const user = new User({
       ...values,

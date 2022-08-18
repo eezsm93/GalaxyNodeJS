@@ -15,6 +15,8 @@ class CreateUserController {
       password,
       photoBase64,
     });
+
+    return response.status(201).json(user);
   }
 }
 
