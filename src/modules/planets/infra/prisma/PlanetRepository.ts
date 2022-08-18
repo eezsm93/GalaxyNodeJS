@@ -8,6 +8,7 @@ class PlanetRepository implements IPlanetRepository {
       where: {
         id,
       },
+      include: { Galaxy: true },
     });
   }
 
