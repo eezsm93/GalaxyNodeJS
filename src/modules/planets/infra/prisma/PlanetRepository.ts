@@ -12,7 +12,7 @@ class PlanetRepository implements IPlanetRepository {
   }
 
   async create(values: Planet): Promise<Planet> {
-    const planet = prisma.planet.create({
+    const planet = await prisma.planet.create({
       data: values,
     });
 
