@@ -20,9 +20,14 @@ class AuthenticateUserUseCase {
       data?.users[0]?.password || ""
     );
 
+    console.log("passei do 3");
+
     if (data?.users.length === 0 || !isPasswordCorrect) {
+      console.log("entrei no if");
       throw new AppError("Login ou senha incorretos");
     }
+
+    console.log("passei do 4");
 
     const { id, name, email, photoBase64 } = data?.users[0];
 
