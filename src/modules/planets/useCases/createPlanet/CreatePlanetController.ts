@@ -1,6 +1,7 @@
 import { GalaxyRepository } from "@modules/galaxy/infra/repository/prisma/GalaxyRepository";
+import { PlanetRepository } from "@modules/planets/infra/prisma/PlanetRepository";
 import { Request, Response } from "express";
-import { PlanetRepository } from "../../infra/prisma/PlanetRepository";
+
 import { CreatePlanetUseCase } from "./CreatePlanetUseCase";
 
 class CreatePlanetController {

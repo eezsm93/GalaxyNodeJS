@@ -11,6 +11,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar(80)
+  email       String   @db.VarChar(100)
+  password    String   @db.VarChar(80)
+  photoBase64 String   @db.VarChar(Max)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
 model Galaxy {
   id          String   @id @default(uuid())
   name        String
