@@ -10,6 +10,7 @@ interface IUpdatePlanetDTO {
   durationDay: number;
   gravity: number;
   isActive: boolean;
+  photoBase64: string;
 }
 
 class UpdatePlanetUseCase {
