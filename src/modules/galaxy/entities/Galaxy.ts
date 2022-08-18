@@ -10,6 +10,7 @@ interface IGalaxy {
   color: string;
   size: number;
   type: string;
+  photoBase64: string;
   Planet?: Array<Planet>;
 }
 
@@ -20,6 +21,7 @@ class Galaxy {
   color: string;
   size: number;
   type: string;
+  photoBase64: string;
   Planet?: Array<Planet>;
 
   constructor(props: IGalaxy) {

@@ -8,6 +8,7 @@ interface ICreateGalaxyDTO {
   color: string;
   size: number;
   type: string;
+  photoBase64: string;
 }
 
 class CreateGalaxyUseCase {
@@ -21,6 +22,7 @@ class CreateGalaxyUseCase {
     color,
     size,
     type,
+    photoBase64,
   }: ICreateGalaxyDTO): Promise<Galaxy> {
     const galaxy = new Galaxy({
       name,
@@ -28,6 +30,7 @@ class CreateGalaxyUseCase {
       color,
       size,
       type,
+      photoBase64,
     });
 
     const galaxyPersisted = await this.galaxyRepository.create(galaxy);

@@ -10,6 +10,7 @@ interface ICreatePlanetDTO {
   durationDay: number;
   gravity: number;
   isActive: boolean;
+  photoBase64: string;
   galaxy_id: string;
 }
 
@@ -27,6 +28,7 @@ class CreatePlanetUseCase {
     durationDay,
     gravity,
     isActive,
+    photoBase64,
     galaxy_id,
   }: ICreatePlanetDTO): Promise<Planet> {
     const Galaxy = await this.galaxyRepository.findById(galaxy_id);
@@ -40,6 +42,7 @@ class CreatePlanetUseCase {
       durationDay,
       gravity,
       isActive,
+      photoBase64,
       Galaxy,
     });
 

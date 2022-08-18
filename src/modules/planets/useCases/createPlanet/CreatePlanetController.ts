@@ -13,6 +13,7 @@ class CreatePlanetController {
       durationDay,
       gravity,
       isActive,
+      photoBase64,
       galaxy_id,
     } = request.body;
 
@@ -20,7 +21,7 @@ class CreatePlanetController {
     const galaxyRepository = new GalaxyRepository();
     const createPlanetUseCase = new CreatePlanetUseCase(
       planetRepository,
-      galaxyRepository,
+      galaxyRepository
     );
 
     const planet = await createPlanetUseCase.execute({
@@ -31,6 +32,7 @@ class CreatePlanetController {
       durationDay,
       gravity,
       isActive,
+      photoBase64,
       galaxy_id,
     });
 

@@ -12,6 +12,7 @@ interface IPlanet {
   durationDay: number;
   gravity: number;
   isActive: boolean;
+  photoBase64: string;
   Galaxy?: Galaxy;
   galaxy_id?: string;
 }
@@ -25,6 +26,7 @@ class Planet {
   durationDay: number;
   gravity: number;
   isActive: boolean;
+  photoBase64: string;
   Galaxy?: Galaxy;
   galaxy_id?: string;
 

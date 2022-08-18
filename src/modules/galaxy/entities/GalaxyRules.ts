@@ -31,6 +31,10 @@ class GalaxyRules {
   @IsNotEmpty()
   @IsString()
   type: string;
+
+  @IsNotEmpty()
+  @IsString()
+  photoBase64: string;
 }
 
 export { GalaxyRules };

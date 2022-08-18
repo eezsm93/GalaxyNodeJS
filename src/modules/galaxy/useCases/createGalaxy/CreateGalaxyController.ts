@@ -4,7 +4,8 @@ import { CreateGalaxyUseCase } from "./CreateGalaxyUseCase";
 
 class CreateGalaxyController {
   async handle(request: Request, response: Response) {
-    const { name, description, color, size, type, planets } = request.body;
+    const { name, description, color, size, type, photoBase64, planets } =
+      request.body;
 
     const galaxyRepository = new GalaxyRepository();
     const createGalaxyUseCase = new CreateGalaxyUseCase(galaxyRepository);
@@ -15,6 +16,7 @@ class CreateGalaxyController {
       color,
       size,
       type,
+      photoBase64,
     });
     return response.status(201).json(galaxy);
   }

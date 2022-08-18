@@ -39,6 +39,10 @@ class PlanetRules {
   @IsNotEmpty()
   @IsBoolean()
   isActive: boolean;
+
+  @IsNotEmpty()
+  @IsString()
+  photoBase64: string;
 }
 
 export { PlanetRules };
